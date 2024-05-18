@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             // 3조
             "D8:3A:DD:79:8E:D9",
             "D8:3A:DD:42:AC:9A",
-            "D8:3A:DD:42:A8:FB",
+            "D8:3A:DD:42:AB:FB",
             "D8:3A:DD:79:8E:9B",
 
 //            // 4조
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String[] MAC_ADDRS3 = {
             "D8:3A:DD:79:8E:D9",
             "D8:3A:DD:42:AC:9A",
-            "D8:3A:DD:42:A8:FB",
+            "D8:3A:DD:42:AB:FB",
             "D8:3A:DD:79:8E:9B"
     };
 
@@ -171,73 +171,6 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-//        btnRegister = (Button) findViewById(R.id.btn_register);
-//        btnRegister.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // 추출된 데이터를 변수에 저장
-//                String sensorValue=null;
-//
-//                String macAddress = detectedMacAddress; //mac address 확인
-//                for (String validMac : MAC_ADDRS1) {
-//                    if (detectedMacAddress.equalsIgnoreCase(validMac)) {
-//                        sensorValue = "1jo";
-//
-//                    }
-//
-//                }
-//                for (String validMac : MAC_ADDRS2) {
-//                    if (detectedMacAddress.equalsIgnoreCase(validMac)) {
-//                        sensorValue = "2jo";
-//
-//                    }
-//                }
-//                for (String validMac : MAC_ADDRS3) {
-//                    if (detectedMacAddress.equalsIgnoreCase(validMac) ) {
-//                        sensorValue = "3jo";
-//                    }
-//                }
-//
-//                for (String validMac : MAC_ADDRS4) {
-//                    if (detectedMacAddress.equalsIgnoreCase(validMac)) {
-//                        sensorValue = "4jo";
-//
-//                    }
-//                }
-//                for (String validMac : MAC_ADDRS5) {
-//                    if (detectedMacAddress.equalsIgnoreCase(validMac)) {
-//                        sensorValue = "5jo";
-//
-//                    }
-//                }
-//                String receiverValue="3jo";
-//                String otpValue = txtPassword.getText().toString(); // OTP 값
-//                String timeValue = txtTime.getText().toString(); // 시간 값
-//                String dataValue = txtData.getText().toString(); // 미세먼지 데이터 값
-//
-//                // comm_data 인터페이스의 인스턴스 생성
-//                comm_data service = retrofit2.create(comm_data.class);
-//
-//                // 서버로 전송할 데이터 구성 및 전송
-//                Call<String> call = service.sendSensorData(sensorValue, macAddress, receiverValue, timeValue, otpValue, dataValue);
-//                call.enqueue(new Callback<String>() {
-//                    @Override
-//                    public void onResponse(Call<String> call, Response<String> response) {
-//                        if (response.isSuccessful()) {
-//                            txtResult.setText(response.body());
-//                        } else {
-//                            txtResult.setText("Error: " + response.errorBody().toString());
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<String> call, Throwable t) {
-//                        txtResult.setText("Failed to send data: " + t.getMessage());
-//                    }
-//                });
-//            }
-//        });
-
         txtResult = (TextView) findViewById(R.id.txt_result);
         txtPassword = (TextView) findViewById(R.id.txt_password);
         txtTime = (TextView) findViewById(R.id.txt_time);
@@ -293,13 +226,6 @@ public class MainActivity extends AppCompatActivity {
                     txtLog.append("\nSensor Data: " + sensorData);
 
                     sendSensorData(macAdd, data);
-
-//                    if (checkPermission()) {
-//                        blead.stopLeScan(this);
-//                        txtLog.append("\n스캔 중지");
-//                    }
-//                    // 일치하는 MAC 주소가 발견되면 루프 종료
-//                    break;
                 }
             }
         }
@@ -381,13 +307,16 @@ public class MainActivity extends AppCompatActivity {
             if (index != -1) {
                 index += pattern.length();
                 for (int i = 0; i < byteCount; i++) {
-                    if (addSlashBetweenBytes && i > 0) sb.append("/");
+                    if (addSlashBetweenBytes && i > 0) sb.append("/");  // 필요 시 '/'로 구분
                     int byteIndex = index + i * 2;
-                    sb.append(Integer.parseInt(noSpaceData.substring(byteIndex, byteIndex + 2), 16));
+                    int byteValue = Integer.parseInt(noSpaceData.substring(byteIndex, byteIndex + 2), 16);
+                    sb.append(byteValue);  // 변환된 값을 StringBuilder에 추가
                 }
             }
             return sb.toString();
         }
+
+
 
 
         public String byteArrayToHex(byte[] a) {
@@ -398,6 +327,5 @@ public class MainActivity extends AppCompatActivity {
             }
             return sb.toString().toUpperCase();
         }
-
     };
 }
