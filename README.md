@@ -17,7 +17,7 @@ Dust Sensor 또는 Air Quality Sensor가 부착된 라즈베리 파이에서 Bro
 
 ## 시스템 아키텍처
 
-![Opensource-6주차](https://github.com/shimyounseob/air-quality-sensing-application/assets/97441805/7823dbeb-a302-4397-8fcf-01640ee42ddd)
+<img src="https://github.com/shimyounseob/air-quality-sensing-application/assets/97441805/7823dbeb-a302-4397-8fcf-01640ee42ddd" alt="Opensource-6주차" width="600">
 
 ## 센싱 이미지
 
