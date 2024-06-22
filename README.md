@@ -21,4 +21,4 @@ Dust Sensor 또는 Air Quality Sensor가 부착된 라즈베리 파이에서 Bro
 
 ## 센싱 이미지
 
-![KakaoTalk_20240623_011722914](https://github.com/shimyounseob/air-quality-sensing-application/assets/97441805/84d06a34-7583-4580-b5c7-7ccb7eb43b7c)
+<img src="https://github.com/shimyounseob/air-quality-sensing-application/assets/97441805/84d06a34-7583-4580-b5c7-7ccb7eb43b7c" alt="KakaoTalk_20240623_011722914" width="300">
