@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     // 서버로부터 성공적인 응답을 받으면 로그에 메시지 추가
                     txtLog.append("\n*********************위치Success*******************: \n\n" + response.body());
-                    key = response.body();
+                    key = response.body(); // 응답으로 받은 키 값을 저장
                 } else {
                     txtLog.append("Error: " + response.errorBody().toString());
                 }
