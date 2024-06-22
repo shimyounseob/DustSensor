@@ -1,23 +1,24 @@
 package com.example.opensource_dust;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
-public interface comm_data {
+// Retrofit Annotation을 사용해 Air Quality Sensor Data를 서버로 전송하는 API 인터페이스
+public interface air_comm_data {
     @FormUrlEncoded
-    @POST("dustsensor/sensing/")
-    Call<String> sendSensorData(
+    @POST("airquality/sensing/")
+    Call<String> sendAirSensorData(
             @Field("sensor") String sensor,
+            @Field("mode") String mode,
             @Field("mac") String mac,
             @Field("receiver") String receiver,
             @Field("time") String time,
             @Field("otp") String otp,
+            @Field("key") String key,
             @Field("data") String data
     );
 }
+
 
